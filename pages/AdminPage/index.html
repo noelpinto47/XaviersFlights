@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Xaviers Airlines - Admin Dashboard</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../images/favicon/apple-touch-icon.png">
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="../../images/favicon/favicon-32x32.png"
+    >
+    <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="../../images/favicon/favicon-16x16.png"
+    >
+    <link rel="manifest" href="../../images/favicon/site.webmanifest">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../css/style.css">
+    <script src="./main.js"></script>
+
+
+    <script type="text/javascript">
+        function validate()
+        {
+         var error="";
+         var name = document.getElementById( "uname" );
+         if( name.value == "" )
+         {
+          error = " Enter username ";
+          document.getElementById( "errormsg" ).innerHTML = error;
+          return false;
+         }
+        
+         var password = document.getElementById( "passkey" );
+         if( password.value == "" )
+         {
+          error = " Enter password ";
+          document.getElementById( "errormsg" ).innerHTML = error;
+          return false;
+         }
+        
+         else if(document.getElementById("uname")=="admin" &&  document.getElementById("passkey")==123456)
+         {
+            location.replace("AdminPanel/index.html");
+             return true;
+         }
+        }
+        
+        </script>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg" style="background-color: #04A289;">
+        <!-- Image and text -->
+        <nav class="navbar navbar-light">
+            <a class="navbar-brand" href="#">
+                <div class="container text-center" style="margin-top: -1.5%;">
+                    <div class="row align-items-start">
+                        <div class="col">
+                            <img
+                                src="../../images/Crest.png"
+                                style="margin-top: -5%;"
+                                width="34"
+                                height="40"
+                                class="d-inline-block align-top"
+                                alt=""
+                            >
+                        </div>
+                        <div class="col" style="margin-left: -15%;">
+                            <span style="color: #fedebad7; font-family: Poppins-Medium,Courier ">Xaviers Airlines</span>
+                        </div>
+                    </div>
+                </a>
+            </nav>
+            <button
+                class="navbar-toggler custom-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto" style="opacity: 0.98;">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../../index.html">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Bookings</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="navbarDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                        >
+                            Flights
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="../Flights/InternationalFlights/index.html">International</a>
+                            <a class="dropdown-item" href="../Flights/DomesticFlights/index.html">Domestic</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a
+                            class="nav-link nvd except "
+                            href="#"
+                            tabindex="-1"
+                            aria-disabled="true"
+                        >My Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <button onClick="javascript:clickinner(this);" type="button" class="btn btn-info">
+                            Sign In/Register
+                        </button>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" style="margin-right: 3%; opacity: 0.95;">
+                    <input
+                        class="form-control mr-sm-2"
+                        type="search"
+                        placeholder="Search for flights"
+                        aria-label="Enter search here"
+                    >
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+
+            <br><br><br>
+            <div class="jumbotron jumbotron-fluid" style="display: flex; justify-content: center;">
+            <div class="card" style="width:50%; background-color: #04A289;">
+                <div class="card-body">
+                  <h5 class="card-title" style="color:white">Admin Panel Login</h5>
+                  <br>
+                    <form  action="../AdminPanel/index.html" method="POST">
+                        <label style="color:white; font-weight: bolder;" for="uname">Username: &nbsp;</label>
+                        <input id="uname" type="text" style="width:60%" id="uname" name="username"><br><br>
+                        <label style="color:white; font-weight: bolder" for="passkey">Password: &nbsp;&nbsp;</label>
+                        <input id="passkey" type="password" style="width:60%" id="passkey" name="password"><br>
+                        <br>
+                        <p id="errormsg"></p>
+                        <input type="submit" value="Submit">
+                    </form>
+                </div>
+              </div>
+            </div>
+        
+        
+        
+        
+            <!-- <div data-sheetdb-url="	https://sheetdb.io/api/v1/60kbutnb8spow">
+                <p>{{airport_short}}</p>
+            </div> -->
+
+
+
+            <!-- Insert data - Don't Override -->
+            <!-- <form style="padding-left: 10%;" method="post" id="sheetdb-form"
+                     action="https://sheetdb.io/api/v1/60kbutnb8spow">
+            Airport 3 letter keyword: <input name="data[airport_short]"> <br><br>
+            Country: <input name="data[country]"> <br><br>
+            <button type="submit">Submit</button>
+            </form> -->
+                
+        
+
+        <br><br><br>
+        <!-- Site footer -->
+        <footer class="site-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6">
+                        <h6>About</h6>
+                        <p class="text-justify">Xaviers Airline is a commercial flight booking company recognized internationally which aims to provide booking services online to customers who wish to travel via airways both domestic and cross-country.
+                            <br>
+                            Our primary vision is to provide leisure and hassle-free user experience from booking to reaching your destination.
+                    Hope you have a good time with us.
+                            <br>
+                            <br>
+                            For any queries or complaints, please feel free to reach out to us on our mail xaviersairline@gmail.com and we'll get back to you on the earliest.
+                        </p>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Contact Us</h6>
+                        <ul class="footer-links">
+                            <li>Office: 5, Mahapalika Marg, Dhobi Talao, Chhatrapati Shivaji Terminus Area, Fort, Mumbai, Maharashtra 400001</li>
+                            <li></li>
+                            <li>Phone: 022-22620661</li>
+                            <br>
+                            <li>Email: xaviersairline@gmail.com</li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-6 col-md-3">
+                        <h6>Quick Links</h6>
+                        <ul class="footer-links">
+                            <li>
+                                <a href="http://scanfcode.com/about/">About Us</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/contact/">Contact Us</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a href="http://scanfcode.com/sitemap/">Sitemap</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-sm-6 col-xs-12">
+                        <p class="copyright-text">
+                            Copyright &copy; 2023 All Rights Reserved by
+                            <a href="#">Noel Pinto & Pratik Sahare - St Xavier's College Mumbai</a>
+                            .
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-sm-6 col-xs-12">
+                        <ul class="social-icons">
+                            <li>
+                                <a class="github" href="#">
+                                    <i class="fa fa-dribbble"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="xaviers_website" href="#">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="https://sheetdb.io/handlebars.js"></script>
+</body>
+</html>

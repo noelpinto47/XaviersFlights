@@ -1,0 +1,3 @@
+font color - #E9D0A9
+nav bar color - #04A289
+background color - #D5ECEA
