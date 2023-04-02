@@ -171,15 +171,15 @@
             <br>
                 <fieldset class="radio-group">
                 <label for="one-way" class="bold-type">
-                    <input type="radio" id="one-way" name="trip-type" value="oneWay" />
+                    <input type="radio" id="one-way" name="trip-type" value="oneWay" onclick="check_trip_type()" />
                     One Way 
                 </label>
                 <label for="round-trip" class="bold-type">
-                    <input type="radio" id="round-trip" name="trip-type" value="roundTrip" checked="checked" />
+                    <input type="radio" id="round-trip" name="trip-type" value="roundTrip" onclick="check_trip_type()" checked="checked" />
                     Round trip
                 </label>
                 <label for="multi-city" class="bold-type">
-                    <input type="radio" id="multi-city" name="trip-type" value="multiCity" />
+                    <input type="checkbox" id="multi-city" name="multi-city" value="multiCity"/>
                     Multi City
                 </label>
                 </fieldset>
@@ -198,7 +198,7 @@
                     <label for="depart" class="bold-type">Depart on</label>
                     <input id="depart_date" placeholder="Pick a date" type="date" name="depart" />
                     </div>
-                    <div class="group-field">
+                    <div class="group-field" id="return_box">
                     <label for="return" class="bold-type">Return on</label>
                     <input id="return_date" placeholder="Pick a date" type="date" name="return" />
                     </div>
@@ -431,7 +431,7 @@
 
         <!-- User JS Files -->
         <script src="./js/useraccount.js"></script>
-        <script src="./js/HomePageJS/"></script>
+        <script src="./js/HomePageJS/RandomSelection.js"></script>
         <script>
             function clickinner(mybtn){
                 location.href='./pages/RegisterPage/index.html?gender=on#';

@@ -4,7 +4,32 @@ var searchResultClicked = false;
 var cards = document.getElementById('cards');
 cards.style.display = "none";
 
+function check_trip_type()
+{
+    var trip_type = document.querySelector('input[name="trip-type"]:checked').value;
+    console.log(trip_type); 
+    
+    var return_box = document.getElementById("return_box");
+
+    if(trip_type == "oneWay")
+    {
+        return_box.style.display = "none";
+    }
+    else if(trip_type == "roundTrip")
+    {
+        if(return_box.style.display == "none")
+        {
+            return_box.style.display = "block";
+        }
+    }
+
+    // if(trip_type)
+}
+
 function searchFlights(){
+
+    var card = cards.childNodes;
+    console.log(card);
     
     cards.style.display="block";
 
@@ -43,6 +68,7 @@ function searchFlights(){
     {
         alert("Return date not entered");
     }
+
 
 
 }
