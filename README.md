@@ -9,7 +9,6 @@
   2. SheetDB.io
   3. Google Analytics
   4. Email Authentication
-  5. Payment Gateway
   
   <br>
   
