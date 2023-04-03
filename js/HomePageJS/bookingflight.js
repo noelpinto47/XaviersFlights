@@ -54,7 +54,7 @@ function searchFlights(){
 }
 
 var count1 = 0, count2 = 0;
-var elem1;
+var elem1, elem2, elem3;
 
 
 async function get_airline_data(preferred_airline, from, to, depart_on, return_on, travel_class, trip_type, adults, children, infants)
@@ -68,7 +68,6 @@ async function get_airline_data(preferred_airline, from, to, depart_on, return_o
         // console.log(typeof data);
         strlogin2 = JSON.stringify(data2);
         
-        var card = cards.childNodes;
         cards.style.display="block";
         
         if(preferred_airline != "Select")
@@ -84,7 +83,6 @@ async function get_airline_data(preferred_airline, from, to, depart_on, return_o
                 elem1 = document.createElement("img");
                 count1++;
             }
-
             
             elem1.setAttribute("src", img1file);
             elem1.setAttribute("alt", "img1");
@@ -141,44 +139,57 @@ async function get_airline_data(preferred_airline, from, to, depart_on, return_o
                 var c = randomNumber(101,112);
             }
 
-            
-            img1 = "air_new_zealand";
-            img2 = "etihad_airways";
-            img3 = "eva_air";
+            const response_a = await fetch('https://sheetdb.io/api/v1/766c1w7u2454g/search?id='+a);
+            const response_b = await fetch('https://sheetdb.io/api/v1/766c1w7u2454g/search?id='+b);
+            const response_c = await fetch('https://sheetdb.io/api/v1/766c1w7u2454g/search?id='+c);
+
+            // Storing data in form of JSON
+            var data_a = await response_a.json();
+            var data_b = await response_b.json();
+            var data_c = await response_c.json();
+
+
+            console.log(data_a[0]['airline_id'] + " " + data_b[0]['airline_id'] + " " + data_c[0]['airline_id']);
+
+            img1 = data_a[0]['airline_id'];
+            img2 = data_b[0]['airline_id'];
+            img3 = data_c[0]['airline_id'];
             
             img1file = "../../images/logos/"+img1+".png";
             img2file = "../../images/logos/"+img2+".png";
             img3file = "../../images/logos/"+img3+".png";
 
-            if(count2 == 0)
+            if(count1 == 0)
             { 
-                count2++;
+                elem1 = document.createElement("img");
+                elem2 = document.createElement("img");
+                elem3 = document.createElement("img");
+               
+                count1++;
             }
+            count1++;
 
             elem1.setAttribute("src", img1file);
             elem1.setAttribute("alt", "img1");
             elem1.setAttribute("id", "img1id");
             elem1.setAttribute("class", "featured-image");
-            document.getElementById("img1div").appendChild(elem1);
-            document.getElementById("card-1-from").innerHTML = from;
+            if(count1 == 2)
+             document.getElementById("img1div").appendChild(elem1);
+           
+             document.getElementById("card-1-from").innerHTML = from;
             document.getElementById("card-1-to").innerHTML = to;
             document.getElementById("card-1-from-date").innerHTML = depart_on;
             document.getElementById("card-1-to-date").innerHTML = return_on;
 
-           
-            elem1.setAttribute("src", img2file);
-            elem1.setAttribute("alt", "img1");
-            elem1.setAttribute("id", "img1id");
-            elem1.setAttribute("class", "featured-image");
-            document.getElementById("img2div").appendChild(elem1);
+            elem2.setAttribute("src", img2file);
+            elem2.setAttribute("alt", "img2");
+            elem2.setAttribute("id", "img2id");
+            elem2.setAttribute("class", "featured-image");
 
-            
-            elem1.setAttribute("src", img3file);
-            elem1.setAttribute("alt", "img1");
-            elem1.setAttribute("id", "img1id");
-            elem1.setAttribute("class", "featured-image");
-            document.getElementById("img3div").appendChild(elem1);
-
+            elem3.setAttribute("src", img3file);
+            elem3.setAttribute("alt", "img2");
+            elem3.setAttribute("id", "img2id");
+            elem3.setAttribute("class", "featured-image");
         }
 
         
