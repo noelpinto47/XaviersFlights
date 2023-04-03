@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-EBEHV0GZH5"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-EBEHV0GZH5');
+        </script>   
         <!-- Meta tags -->
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,6 +40,7 @@
         <!-- External JS files -->
         <script src="./js/userlogin.js"></script>
         <script src="./js/main.js"></script>
+
     </head>
 
     <body style="background-color: #D5ECEA;">
@@ -112,13 +122,14 @@
                         </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0" style="margin-right: 3%; opacity: 0.95;">
-                        <input
-                            class="form-control mr-sm-2"
-                            type="search"
-                            placeholder="Search for flights"
-                            aria-label="Enter search here"
-                        >
-                        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+                            <table>
+                                <td>
+                                    <select name="currency" class="form-select">
+                                        <option value="INR">INR</option>
+                                        <option value="USD" selected>USD</option>
+                                    </select>
+                                </td>
+                            </table>    
                     </form>
                 </div>
             </nav>
@@ -243,16 +254,29 @@
                     <details>
                     <summary class="more-link"> <b>More options: </b>Class of travel, Airline Preference</summary>
                     <div class="group-field">
-                    <label for="class-of-travel">Class of travel</label>
-                    <select name="class-of-travel" class="travel-class-select">
+                    <label for="class-of-travel" >Class of travel</label>
+                    <select name="class-of-travel" id="travel_class" class="travel-class-select">
                         <option value="economy">Economy</option>
                         <option value="business">Business class</option>
-                        <option value="firstClass">First class</option>
                     </select>
                     </div>
                     <div class="group-field">
-                    <label for="airline-name">Preferred Airline</label> 
-                    <input class="airline-name" type="text" name="airline-name" size="30" maxlength="100" placeholder="Airline name"/> 
+                    <label for="airline-name">Preferred Airline</label>     
+                    <select class="airline-name" id="preferred_airline" name="airline-name">
+                        <option value="select" selected>Select</option>
+                        <option value="air_new_zealand">Air New Zealand</option>
+                        <option value="air_nippon_airways">Air Nippon</option>
+                        <option value="cathay_pacific_airways">Cathay Pacific</option>
+                        <option value="etihad_airways">Etihad Airways</option>
+                        <option value="eva_air">Eva Air</option>
+                        <option value="korean_air">Korean Air</option>
+                        <option value="qantas">Qantas</option>
+                        <option value="qatar_airways">Qatar Airways</option>
+                        <option value="singapore_airlines">Singapore Airlines</option>
+                        <option value="tukish_airlines">Turkish Airlines</option>
+                        <option value="virgin_atlantic">Virgin Atlantic</option>
+                        <option value="virgin_australia">Virgin Australia</option>
+                    </select>
                     </div>
                 </details> 
                 </fieldset>
@@ -273,21 +297,21 @@
                     </div>
                     <article class="card-body"> 
                         <header>
-                                <span style="color:white" class="pre-heading">AIR NEW ZEALAND  AIRWAYS</span>
+                                <span id="card-1-heading" style="color:white" class="pre-heading">AIR NEW ZEALAND  AIRWAYS</span>
                                 <div class="title">
-                                    <h3 style="color: white;" >From <span>To</span></h3>
+                                    <h3 style="color: white;">From <span id="card-1-from"></span> To <span id="card-1-to"></span></h3>
                                 </div>
                                 <p class="meta" style="color:white">
-                                    <span class="author">PRICE: </span>
+                                    <span class="author" id="card-1-price">PRICE: </span>
                                     <br> <br>
-                                    <span>SCHEDULE FROM : .... TO : </span>
+                                    <span>SCHEDULE FROM : <span id="card-1-from-date"></span> TO : <span id="card-1-to-date"></span></span>
                                 </p>
                             </a>
                         </header>
                         <div class="chips" style="color:white">
                             <a class="chip">Book Flight</a>
                             <a class="chip">Add to favorites</a>
-                            <a class="chip">One way</a>
+                            <a class="chip" id="card-1-trip-type">One way</a>
                         </div>
                     </article>
                 </li>

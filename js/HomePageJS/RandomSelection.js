@@ -60,12 +60,6 @@ img3file = "../../images/logos/"+img3+".png";
 
 console.log(img1file + " " + img2file + " " + img3file);
 
-var elem = document.createElement("img");
-    elem.setAttribute("src", img1file);
-    elem.setAttribute("alt", "img1");
-    elem.setAttribute("id", "img1id");
-    elem.setAttribute("class", "featured-image");
-    document.getElementById("img1div").appendChild(elem);
 
     elem = document.createElement("img");
     elem.setAttribute("src", img2file);
