@@ -8,7 +8,7 @@
   1. HTML, CSS, JS
   2. SheetDB.io
   3. Google Analytics
-  4. Email Authentication
+  4. Email Validation
   
   <br>
   
