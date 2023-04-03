@@ -99,6 +99,7 @@ document.querySelector('#button-1').addEventListener('click', function(){
           
               
               alert("User Sucessfully Registered!");
+
             } else {
               alert("You pressed Cancel!");
             }
