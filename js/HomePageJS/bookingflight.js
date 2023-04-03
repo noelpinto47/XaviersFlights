@@ -113,7 +113,14 @@ async function get_airline_data(preferred_airline, from, to, depart_on, return_o
                 document.getElementById("card-1-price").innerHTML = data2[0]['pricing_business_usd'];
             }
 
-            document.getElementById("card-1-trip-type").innerHTML = trip_type;
+            if(trip_type == "roundTrip")
+            {
+                document.getElementById("card-1-trip-type").innerHTML = "Round Trip";
+            }
+            else if(trip_type == "oneWay")
+            {
+                document.getElementById("card-1-trip-type").innerHTML = "One Way";
+            }
 
         }
         else if(preferred_airline == "Select")

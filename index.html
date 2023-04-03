@@ -42,7 +42,7 @@
         <script src="./js/userlogin.js"></script>
         <script src="./js/main.js"></script>
         <script src="./js/useraccount.js"></script>
-        
+        <script src="./js/HomePageJS/bookflight.js"></script>
     </head>
 
     <body style="background-color: #D5ECEA;">
@@ -264,6 +264,26 @@
                     <label class="label-hint">Below 2 yrs</label>
                     </div>
                 </fieldset>
+
+                <fieldset>
+                    <legend>Person 1</legend>
+                    <div class="group-select-field">
+                    <label for="adults" class="bold-type">Name as on Passport</label> 
+                    <input type="text" class="form-control" name="passport_id" style="width:80%;" >
+                    </div>
+                    <div class="group-select-field">
+                        <label for="adults" class="bold-type">Passport Number</label> 
+                        <input type="text" class="form-control" name="passport_id" style="width:80%;" >
+                    </select>
+                    </div>
+                    <div class="group-select-field">
+                    <label for="adults" class="bold-type">Passport Expiry</label> 
+                    <input type="date" name="passport_id" style="width:80%;" >
+                    </div>
+                </fieldset>
+                <br>
+
+                
                 <fieldset class="more-option">
                     <details>
                     <summary class="more-link"> <b>More options: </b>Class of travel, Airline Preference</summary>
@@ -323,8 +343,8 @@
                             </a>
                         </header>
                         <div class="chips" style="color:white">
-                            <a class="chip">Book Flight</a>
-                            <a class="chip">Add to favorites</a>
+                            <a class="chip" onclick="book_flight()">Book Flight</a>
+                            <!-- <a class="chip" aria-disabled="true" style="">Add to favorites</a> -->
                             <a class="chip" id="card-1-trip-type">One way</a>
                         </div>
                     </article>
