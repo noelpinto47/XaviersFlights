@@ -198,11 +198,23 @@
                 <fieldset>
                     <div class="group-field">
                     <label for="from" class="bold-type">From </label>
-                    <input id="from_place"  class="from-place" type="text" name="from" maxlength="100" placeholder="Any world wide city or airport">
-                </div>
+                    <select class="form-select" aria-label="Default select example" id="from-place">
+                        <option value="Select">Select</option>
+                        <option value="1"> Mumbai (BOM)</option>
+                        <option value="2">Melbourne (MEL)</option>
+                        <option value="3">Venice (VCE)</option>
+                        <option value="4">Rio de Janeiro (RIO)</option>
+                      </select>
+                    </div>
                     <div class="group-field">
                     <label for="to" class="bold-type">To </label>
-                    <input id="to_place" class="to-place" type="text" name="to"  maxlength="100" placeholder="Any world wide city or airport">
+                        <select class="form-select" aria-label="Default select example" id="to-place">
+                            <option value="Select">Select</option>
+                            <option value="1"> Mumbai (BOM)</option>
+                            <option value="2">Melbourne (MEL)</option>
+                            <option value="3">Venice (VCE)</option>
+                            <option value="4">Rio de Janeiro (RIO)</option>
+                          </select>
                     </div>
                 </fieldset>
                 <fieldset>
@@ -300,10 +312,10 @@
                         <header>
                                 <span id="card-1-heading" style="color:white" class="pre-heading">AIR NEW ZEALAND  AIRWAYS</span>
                                 <div class="title">
-                                    <h3 style="color: white;">From <span id="card-1-from"></span> To <span id="card-1-to"></span></h3>
+                                    <h3 style="color: white; font-size: 24px;" >From <span id="card-1-from"></span> To <span id="card-1-to"></span></h3>
                                 </div>
                                 <p class="meta" style="color:white">
-                                    <span class="author" id="card-1-price">PRICE: </span>
+                                    TOTAL PRICE: <span class="author" id="card-1-price">PRICE: </span>
                                     <br> <br>
                                     <span>SCHEDULE FROM : <span id="card-1-from-date"></span> TO : <span id="card-1-to-date"></span></span>
                                 </p>
@@ -432,21 +444,14 @@
                         <div class="col-md-8 col-sm-6 col-xs-12">
                             <p class="copyright-text">
                                 Copyright &copy; 2023 All Rights Reserved by
-                                <a href="#">Noel Pinto & Pratik Sahare - St Xavier's College Mumbai</a>
+                                <a href="#">Noel Pinto - St Xavier's College Mumbai</a>
                                 .
                             </p>
                         </div>
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <ul class="social-icons">
                                 <li>
-                                    <a class="github" href="#">
-                                        <i class="fa fa-dribbble"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a class="xaviers_website" href="#">
-                                        <i class="fa fa-linkedin"></i>
-                                    </a>
+                                    <img src="./images/github_logo.png" alt="image not found" style="width:35px; height:35px; background-color: white; border-radius: 50%; opacity: 70%;" onclick="redirect_to_github()"/>
                                 </li>
                             </ul>
                         </div>
@@ -464,6 +469,13 @@
         </script>
         <script src="./js/HomePageJS/bookingflight.js"></script>
 
+
+
+            <script>
+                function redirect_to_github(){
+                    window.location = 'https://github.com/curiouslumber/airlineproject-finalyear-main-master';
+                }
+            </script>
             
             <!-- JQuery and Boostrap JS -->
             <script src="./js/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -28,14 +28,13 @@ function check_trip_type()
 
 function searchFlights(){
 
-
-    
-
     var trip_type = document.querySelector('input[name="trip-type"]:checked').value;
     console.log(trip_type);
 
-    var from = document.getElementById("from_place").value;
-    var to = document.getElementById("to_place").value;
+    var e = document.getElementById("from-place");
+    var from = e.options[e.selectedIndex].text;
+    var e = document.getElementById("to-place");
+    var to = e.options[e.selectedIndex].text;
     var depart_on = document.getElementById("depart_date").value;
     var return_on = document.getElementById("return_date").value;
     var adults  = document.getElementById("adults").value;
@@ -43,30 +42,22 @@ function searchFlights(){
     var infants = document.getElementById("infants").value;
 
     var e = document.getElementById("travel_class");
-    var value = e.value;
     var travel_class = e.options[e.selectedIndex].text;
     console.log(travel_class);
 
     var e = document.getElementById("preferred_airline");
-    var value = e.value;
     var preferred_airline = "";
     preferred_airline = e.options[e.selectedIndex].text;
     console.log(preferred_airline);
 
-    get_airline_data(preferred_airline, from, to, depart_on, return_on, travel_class, trip_type);
-
-    console.log(cards.childNodes[5].style.display);
-
-    
-
-    console.log(from, to, depart_on, return_on, adults, children, infants);
+    get_airline_data(preferred_airline, from, to, depart_on, return_on, travel_class, trip_type, adults, children, infants);
 }
 
 var count1 = 0, count2 = 0;
 var elem1;
 
 
-async function get_airline_data(preferred_airline, from, to, depart_on, return_on, travel_class, trip_type)
+async function get_airline_data(preferred_airline, from, to, depart_on, return_on, travel_class, trip_type, adults, children, infants)
 {
 
         const response2 = await fetch("https://sheetdb.io/api/v1/el1a9b9s02z8h/search?airline_name="+preferred_airline);
@@ -102,8 +93,18 @@ async function get_airline_data(preferred_airline, from, to, depart_on, return_o
             document.getElementById("img1div").appendChild(elem1);
             document.getElementById("card-1-from").innerHTML = from;
             document.getElementById("card-1-to").innerHTML = to;
-            document.getElementById("card-1-from-date").innerHTML = depart_on;
-            document.getElementById("card-1-to-date").innerHTML = return_on;
+
+            var mydate = new Date(depart_on);
+            var month = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
+            var str = mydate.getDay().toString() + ' '  +  month + ' ' + mydate.getFullYear();
+            document.getElementById("card-1-from-date").innerHTML = str;
+
+            var mydate = new Date(return_on);
+            var month = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"][mydate.getMonth()];
+            var str2 = mydate.getDay().toString() + ' '  +  month + ' ' + mydate.getFullYear();
+            document.getElementById("card-1-to-date").innerHTML = str2;
 
             if(travel_class == "Economy")
             {

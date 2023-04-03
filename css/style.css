@@ -44,7 +44,7 @@
 .radio-group label{
   padding-right: 90px;
 }
-.from-place, .to-place, .airline-name{
+.from-place, .to-place{
   width: 90%;
   height: 36px;
   padding: 2px 8px;
@@ -60,6 +60,9 @@ fieldset div{
   padding: 10px 0px;
   float: left;
 }    
+
+
+
 .group-field{
     width: 420px;
     height: auto;
@@ -86,6 +89,53 @@ fieldset div{
   border: none;
   margin-top: 20px;
 }
+
+
+@media screen and (max-width: 600px) {
+
+  html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    }
+
+  .trip-form{
+    margin: 0%;
+    padding: 5%;
+    width: 80%;
+  }
+
+  .group-select-field{
+    width: 80%;
+    height: auto;
+  }
+
+  fieldset div{
+    float: inline-start;
+  }
+
+  .more-link{
+    width: 80%;
+  }
+
+  
+.search-btn{
+  float: left;
+  padding: 10px 22px;
+  border-radius: 6px;
+  outline: none;
+  font-weight: bold;
+  background: #457b52;
+  color: white;
+  border: none;
+  margin-top: 20px;
+}
+
+
+
+}
+
+
+
 .place-swap-btn{
   background: transparent;
   border: none;
@@ -454,13 +504,6 @@ h3 {
 .author {
   text-transform: uppercase;
 }
-
-/* ul {
-  display: block;
-  margin: 0 auto;
-  max-width: 1160px;
-  padding: 30px;
-} */
 
 a {
   text-decoration: none;
