@@ -1,4 +1,4 @@
-# Flight Booking Website for Final Year Project
+# Flight Booking Website
 ![alt text](images/Crest.png)
 
 
