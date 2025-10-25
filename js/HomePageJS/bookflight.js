@@ -3,7 +3,7 @@ var strlogin = "";
 
 async function bookingapi(preferred_airline, trip_type) {
 
-fetch('https://sheetdb.io/api/v1/tggtw9qaihl6s', {
+fetch(CONFIG.SHEETDB_BOOKINGS_API, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',

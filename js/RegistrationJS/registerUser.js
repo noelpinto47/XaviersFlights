@@ -15,7 +15,7 @@ document.querySelector('#button-1').addEventListener('click', function(){
 
   // api url
   const api_url = 
-        "https://sheetdb.io/api/v1/ydvonqq5r96vl/search?email="+email;
+        CONFIG.SHEETDB_USERS_API + "/search?email=" + email;
     
   // Defining async function
   async function getapi(url) {
@@ -94,7 +94,7 @@ document.querySelector('#button-1').addEventListener('click', function(){
       if (confirm("Register User?")) {
                 
                 
-                fetch('https://sheetdb.io/api/v1/ydvonqq5r96vl', {
+                fetch(CONFIG.SHEETDB_USERS_API, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',

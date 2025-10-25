@@ -1,4 +1,4 @@
-apiurl = 'https://sheetdb.io/api/v1/mw8od9co60e23/search?active=TRUE';
+apiurl = CONFIG.SHEETDB_SESSIONS_API + '/search?active=TRUE';
 
 var strlogin = "";
 
@@ -27,7 +27,7 @@ else
     if(strlogin.indexOf(data[0]['email']) >= 0 )
     {
         var emailid = data[0][['email']];
-        const response2 = await fetch("https://sheetdb.io/api/v1/ydvonqq5r96vl/search?email="+emailid);
+        const response2 = await fetch(CONFIG.SHEETDB_USERS_API + "/search?email=" + emailid);
 
         // Storing data in form of JSON
         var data2 = await response2.json();

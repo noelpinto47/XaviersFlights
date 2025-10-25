@@ -60,7 +60,7 @@ var elem1, elem2, elem3;
 async function get_airline_data(preferred_airline, from, to, depart_on, return_on, travel_class, trip_type, adults, children, infants)
 {
 
-        const response2 = await fetch("https://sheetdb.io/api/v1/el1a9b9s02z8h/search?airline_name="+preferred_airline);
+        const response2 = await fetch(CONFIG.SHEETDB_AIRLINE_NAMES_API + "/search?airline_name=" + preferred_airline);
     
         // Storing data in form of JSON
         var data2 = await response2.json();
@@ -139,9 +139,9 @@ async function get_airline_data(preferred_airline, from, to, depart_on, return_o
                 var c = randomNumber(101,112);
             }
 
-            const response_a = await fetch('https://sheetdb.io/api/v1/766c1w7u2454g/search?id='+a);
-            const response_b = await fetch('https://sheetdb.io/api/v1/766c1w7u2454g/search?id='+b);
-            const response_c = await fetch('https://sheetdb.io/api/v1/766c1w7u2454g/search?id='+c);
+            const response_a = await fetch(CONFIG.SHEETDB_AIRLINES_API + '/search?id=' + a);
+            const response_b = await fetch(CONFIG.SHEETDB_AIRLINES_API + '/search?id=' + b);
+            const response_c = await fetch(CONFIG.SHEETDB_AIRLINES_API + '/search?id=' + c);
 
             // Storing data in form of JSON
             var data_a = await response_a.json();

@@ -28,6 +28,7 @@
         <link rel="stylesheet" href="../../css/bootstrap.min.css" crossorigin="anonymous">
         <link rel="stylesheet" href="./style.css">
         <script src="../../js/jquery-3.3.1.slim.min.js" type="text/javascript"></script>
+        <script src="../../js/config.js"></script>
         <script src="./main.js"></script>
         <script src="../../js/userlogin.js"></script>
 
@@ -141,7 +142,7 @@
             
               // api url
               const api_url = 
-                    "https://sheetdb.io/api/v1/ydvonqq5r96vl/search?email="+email;
+                    CONFIG.SHEETDB_USERS_API + "/search?email=" + email;
                 
               // Defining async function
               async function getapi(url) {
@@ -180,7 +181,7 @@
                       console.log(str);
                       
                       const api_url2 = 
-                    "https://sheetdb.io/api/v1/mw8od9co60e23/search?email="+email;
+                    CONFIG.SHEETDB_SESSIONS_API + "/search?email=" + email;
                 
                       // Storing response
                   const response2 = await fetch(api_url2);
@@ -196,7 +197,7 @@
                       }
                       else{
 
-                      fetch('https://sheetdb.io/api/v1/mw8od9co60e23', {
+                      fetch(CONFIG.SHEETDB_SESSIONS_API, {
                             method: 'POST',
                             headers: {
                                 'Accept': 'application/json',

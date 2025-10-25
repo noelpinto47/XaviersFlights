@@ -110,13 +110,39 @@ Then open your browser and navigate to `http://localhost:8000`
 
 ## 🔧 Configuration
 
+### Environment Variables
+
+The project uses a centralized configuration system for API endpoints. All SheetDB API URLs are managed through:
+
+1. **`.env` file** - Contains your actual API keys (not tracked in git)
+2. **`js/config.js`** - Loads and provides API endpoints to the application
+3. **`.env.example`** - Template file showing required variables
+
+#### Setup Instructions:
+
+1. The `.env` file already contains the current API endpoints
+2. To use your own SheetDB APIs:
+   - Copy `.env.example` to create a new `.env` file
+   - Replace the placeholder values with your actual SheetDB API endpoints
+   - Update the values in `js/config.js` to match your `.env` file
+
+#### API Endpoints Used:
+
+- **SHEETDB_AIRLINES_API** - Stores airline information and details
+- **SHEETDB_AIRLINE_NAMES_API** - Used for searching airlines by name
+- **SHEETDB_USERS_API** - Manages user registration and authentication
+- **SHEETDB_SESSIONS_API** - Tracks active user sessions
+- **SHEETDB_BOOKINGS_API** - Stores flight booking information
+- **SHEETDB_ADMIN_API** - Admin panel data (optional)
+
 ### SheetDB Integration
 
 The project uses SheetDB.io for data storage. To set up your own instance:
 
-1. Create a Google Sheet with your flight data
-2. Connect it to SheetDB.io
-3. Update the API endpoints in the JavaScript files
+1. Create Google Sheets for each data type (users, bookings, airlines, etc.)
+2. Connect each sheet to SheetDB.io to get API endpoints
+3. Update the API endpoints in `js/config.js`
+4. Optionally update the `.env` file for documentation
 
 ### Google Analytics
 

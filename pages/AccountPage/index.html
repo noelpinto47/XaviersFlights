@@ -27,6 +27,7 @@
         <!-- CSS -->
         <link rel="stylesheet" href="../../css/bootstrap.min.css" crossorigin="anonymous">
         <link rel="stylesheet" href="./style.css">
+        <script src="../../js/config.js"></script>
         <script src="./main.js"></script>
 
     </head>
@@ -174,7 +175,7 @@
 
             // api url
             const api_url = 
-                    "https://sheetdb.io/api/v1/mw8od9co60e23/search?id=1";
+                    CONFIG.SHEETDB_SESSIONS_API + "/search?id=1";
                 
               // Defining async function
               async function getapi(url) {
@@ -187,7 +188,7 @@
 
                   emailtemp = data[0]['email'];
 
-                  const response2 = await fetch('https://sheetdb.io/api/v1/ydvonqq5r96vl/search?email='+emailtemp);
+                  const response2 = await fetch(CONFIG.SHEETDB_USERS_API + '/search?email=' + emailtemp);
                   
                   var data2 = await response2.json();
 
@@ -211,7 +212,7 @@
 
                 if(confirm("Confirm log out?"))
                 {
-                  fetch('https://sheetdb.io/api/v1/mw8od9co60e23/id/1', {
+                  fetch(CONFIG.SHEETDB_SESSIONS_API + '/id/1', {
                     method: 'DELETE',
                     headers: {
                         'Accept': 'application/json',
