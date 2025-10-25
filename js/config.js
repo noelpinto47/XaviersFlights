@@ -1,13 +1,13 @@
 /**
  * Configuration file for SheetDB API endpoints
  * 
- * This file loads API endpoints from environment variables or falls back to defaults.
- * For production, update the .env file with your actual SheetDB API keys.
+ * This is the PRIMARY configuration file for all API endpoints.
+ * Since this project uses plain HTML/CSS/JS without a build tool,
+ * all API endpoints are defined directly here.
+ * 
+ * To update API endpoints: Edit the CONFIG object below.
+ * The .env file is included only for documentation/reference.
  */
-
-// Note: In a browser environment, we need to manually load env variables
-// For now, we'll define them directly here. In production, you'd want to use
-// a build tool like webpack or vite to inject these from .env
 
 const CONFIG = {
     // Airlines Database API (for fetching airline information)

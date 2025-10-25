@@ -112,19 +112,15 @@ Then open your browser and navigate to `http://localhost:8000`
 
 ### Environment Variables
 
-The project uses a centralized configuration system for API endpoints. All SheetDB API URLs are managed through:
+The project uses a centralized configuration system for API endpoints. All SheetDB API URLs are managed in `js/config.js`.
 
-1. **`.env` file** - Contains your actual API keys (not tracked in git)
-2. **`js/config.js`** - Loads and provides API endpoints to the application
-3. **`.env.example`** - Template file showing required variables
+**Important**: Since this is a plain HTML/CSS/JS project without a build tool, API endpoints are defined directly in the `config.js` file. The `.env` file is included only for documentation/reference purposes.
 
 #### Setup Instructions:
 
-1. The `.env` file already contains the current API endpoints
-2. To use your own SheetDB APIs:
-   - Copy `.env.example` to create a new `.env` file
-   - Replace the placeholder values with your actual SheetDB API endpoints
-   - Update the values in `js/config.js` to match your `.env` file
+1. **To update API endpoints**: Edit `js/config.js` directly
+2. **For reference**: The `.env` file documents what each API endpoint is used for
+3. **For new developers**: Use `.env.example` to understand the required configuration
 
 #### API Endpoints Used:
 
