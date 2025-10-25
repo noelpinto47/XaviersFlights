@@ -75,3 +75,5 @@ backup/
 # Documentation builds
 docs/_build/
 site/
+
+.docs/
