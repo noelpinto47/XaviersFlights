@@ -17,10 +17,10 @@ const CONFIG = {
     SHEETDB_AIRLINE_NAMES_API: 'https://sheetdb.io/api/v1/el1a9b9s02z8h',
     
     // User Registration/Login API
-    SHEETDB_USERS_API: 'https://sheetdb.io/api/v1/ydvonqq5r96vl',
+    SHEETDB_USERS_API: 'https://sheetdb.io/api/v1/4rekpaskd0cv3',
     
     // Active Sessions API (for tracking logged-in users)
-    SHEETDB_SESSIONS_API: 'https://sheetdb.io/api/v1/mw8od9co60e23',
+    SHEETDB_SESSIONS_API: 'https://sheetdb.io/api/v1/1qf41to0ixqd2',
     
     // Bookings API (for flight bookings)
     SHEETDB_BOOKINGS_API: 'https://sheetdb.io/api/v1/tggtw9qaihl6s',
