@@ -40,9 +40,8 @@
 
         <!-- External JS files -->
         <script src="./js/config.js"></script>
-        <script src="./js/userlogin.js"></script>
+        <script src="./js/auth.js"></script>
         <script src="./js/main.js"></script>
-        <script src="./js/useraccount.js"></script>
         <script src="./js/HomePageJS/bookflight.js"></script>
     </head>
 
@@ -119,7 +118,7 @@
                             >My Account</a>
                         </li>
                         <li class="nav-item">
-                            <button onClick="javascript:clickinner(this);" type="button" class="btn btn-info" id="signinbutton">
+                            <button type="button" class="btn btn-info" id="signinbutton">
                                 Sign In/Register
                             </button>
                         </li>
@@ -308,7 +307,7 @@
                         <option value="qantas">Qantas</option>
                         <option value="qatar_airways">Qatar Airways</option>
                         <option value="singapore_airlines">Singapore Airlines</option>
-                        <option value="tukish_airlines">Turkish Airlines</option>
+                        <option value="turkish_airlines">Turkish Airlines</option>
                         <option value="virgin_atlantic">Virgin Atlantic</option>
                         <option value="virgin_australia">Virgin Australia</option>
                     </select>
@@ -339,12 +338,12 @@
                                 <p class="meta" style="color:white">
                                     TOTAL PRICE: <span class="author" id="card-1-price">PRICE: </span>
                                     <br> <br>
-                                    <span>SCHEDULE FROM : <span id="card-1-from-date"></span> TO : <span id="card-1-to-date"></span></span>
+                                    <span id="card-1-schedule">SCHEDULE FROM : <span id="card-1-from-date"></span> TO : <span id="card-1-to-date"></span></span>
                                 </p>
                             </a>
                         </header>
                         <div class="chips" style="color:white">
-                            <a class="chip" onclick="book_flight()">Book Flight</a>
+                            <a class="chip" onclick="book_flight(1)">Book Flight</a>
                             <!-- <a class="chip" aria-disabled="true" style="">Add to favorites</a> -->
                             <a class="chip" id="card-1-trip-type">One way</a>
                         </div>
@@ -359,21 +358,21 @@
                         </div>
                         <article class="card-body"> 
                             <header>
-                                    <span style="color:white" class="pre-heading">AIR NEW ZEALAND  AIRWAYS</span>
+                                    <span id="card-2-heading" style="color:white" class="pre-heading"></span>
                                     <div class="title">
-                                        <h3 style="color: white;" >From <span>To</span></h3>
+                                        <h3 style="color: white; font-size: 24px;" >From <span id="card-2-from"></span> To <span id="card-2-to"></span></h3>
                                     </div>
                                     <p class="meta" style="color:white">
-                                        <span class="author">PRICE: </span>
+                                        TOTAL PRICE: <span class="author" id="card-2-price"></span>
                                         <br> <br>
-                                        <span>SCHEDULE FROM : .... TO : </span>
+                                        <span id="card-2-schedule">SCHEDULE FROM : <span id="card-2-from-date"></span> TO : <span id="card-2-to-date"></span></span>
                                     </p>
                                 </a>
                             </header>
                             <div class="chips" style="color:white">
-                                <a class="chip">Book Flight</a>
-                                <a class="chip">Add to favorites</a>
-                                <a class="chip">One way</a>
+                                <a class="chip" onclick="book_flight(2)">Book Flight</a>
+                                <!-- <a class="chip" aria-disabled="true" style="">Add to favorites</a> -->
+                                <a class="chip" id="card-2-trip-type">One way</a>
                             </div>
                         </article>
                     </li>
@@ -387,21 +386,21 @@
                             </div>
                             <article class="card-body"> 
                                 <header>
-                                        <span style="color:white" class="pre-heading">AIR NEW ZEALAND  AIRWAYS</span>
+                                        <span id="card-3-heading" style="color:white" class="pre-heading"></span>
                                         <div class="title">
-                                            <h3 style="color: white;" >From <span>To</span></h3>
+                                            <h3 style="color: white; font-size: 24px;" >From <span id="card-3-from"></span> To <span id="card-3-to"></span></h3>
                                         </div>
                                         <p class="meta" style="color:white">
-                                            <span class="author">PRICE: </span>
+                                            TOTAL PRICE: <span class="author" id="card-3-price"></span>
                                             <br> <br>
-                                            <span>SCHEDULE FROM : .... TO : </span>
+                                            <span id="card-3-schedule">SCHEDULE FROM : <span id="card-3-from-date"></span> TO : <span id="card-3-to-date"></span></span>
                                         </p>
                                     </a>
                                 </header>
                                 <div class="chips" style="color:white">
-                                    <a class="chip">Book Flight</a>
-                                    <a class="chip">Add to favorites</a>
-                                    <a class="chip">One way</a>
+                                    <a class="chip" onclick="book_flight(3)">Book Flight</a>
+                                    <!-- <a class="chip" aria-disabled="true" style="">Add to favorites</a> -->
+                                    <a class="chip" id="card-3-trip-type">One way</a>
                                 </div>
                             </article>
                         </li>
@@ -483,11 +482,6 @@
 
         <!-- User JS Files -->
         <script src="./js/HomePageJS/RandomSelection.js"></script>
-        <script>
-            function clickinner(mybtn){
-                location.href='./pages/RegisterPage/index.html?gender=on#';
-            };
-        </script>
         <script src="./js/HomePageJS/bookingflight.js"></script>
 
 

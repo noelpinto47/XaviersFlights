@@ -567,3 +567,79 @@ a.chip:hover, a.chip:visited, a.chip:active {
 a.chip.large:visited, a.chip.large:hover, a.chip.large:active {
   color: black;
 }
+
+/* Bookings Page Styles */
+.bookings {
+  min-height: 400px;
+  padding: 20px 0;
+}
+
+.bookings .card {
+  transition: all 0.3s ease;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.bookings .card:hover {
+  transform: translateX(5px);
+  box-shadow: 0 8px 20px rgba(4, 162, 137, 0.3) !important;
+}
+
+.bookings .card-body {
+  padding: 20px;
+}
+
+.bookings .btn-success {
+  transition: all 0.3s ease;
+}
+
+.bookings .btn-success:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(4, 162, 137, 0.4);
+  background-color: #5faf8a !important;
+}
+
+/* Modal Styles */
+#boardingPassModal .modal-content {
+  border-radius: 15px;
+  border: none;
+}
+
+#boardingPassModal .modal-header {
+  background: linear-gradient(135deg, #04A289 0%, #5faf8a 100%);
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#boardingPassModal .modal-body {
+  padding: 30px;
+  background: #f8f9fa;
+}
+
+#boardingPassModal .modal-footer .btn-primary {
+  background: linear-gradient(135deg, #04A289 0%, #5faf8a 100%);
+  border: none;
+}
+
+#boardingPassModal .modal-footer .btn-primary:hover {
+  background: linear-gradient(135deg, #5faf8a 0%, #04A289 100%);
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #boardingPassContent, #boardingPassContent * {
+    visibility: visible;
+  }
+  #boardingPassContent {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+.sign-out-button {
+    color: white;
+}

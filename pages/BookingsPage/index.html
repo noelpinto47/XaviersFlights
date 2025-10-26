@@ -37,8 +37,9 @@
         <link rel="stylesheet" href="../../css/bootstrap.min.css" crossorigin="anonymous">
         <script src="../../js/jquery-3.3.1.slim.min.js" text="type/javascript"></script>
         <link rel="stylesheet" href="../../css/style.css">
+        <script src="../../js/config.js"></script>
+        <script src="../../js/auth.js"></script>
         <script src="../../js/main.js"></script>
-        <script src="../../js/HomePageJS/bookflight.js"></script>
     </head>
 
     <body style="background-color: #D5ECEA;">
@@ -110,10 +111,11 @@
                                 href="#"
                                 tabindex="-1"
                                 aria-disabled="true"
+                                id="myaccount"
                             >My Account</a>
                         </li>
                         <li class="nav-item">
-                            <button onClick="javascript:clickinner(this);" type="button" class="btn btn-info">
+                            <button type="button" class="btn btn-info" id="signinbutton">
                                 Sign In/Register
                             </button>
                         </li>
@@ -134,14 +136,35 @@
             <br>
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                    <h1 class="display-4">Your Bookings</h1>
+                    <h1 class="display-4">Your Bookings, <span id="usernamep"></span></h1>
                     <br>
                     <!-- <p class="lead">This is the homepage of the website.</p> -->
                 </div>
             </div>
 
             <div class="bookings" id="bookings">
-
+                <!-- Bookings will be dynamically loaded here -->
+            </div>
+            
+            <!-- Modal for Boarding Pass -->
+            <div class="modal fade" id="boardingPassModal" tabindex="-1" role="dialog" aria-labelledby="boardingPassModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="boardingPassModalLabel">Boarding Pass</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="boardingPassContent">
+                            <!-- Boarding pass will be displayed here -->
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="printBoardingPass()">Print</button>
+                        </div>
+                    </div>
+                </div>
             </div>
 
 
@@ -150,10 +173,166 @@
             <script src="../../js/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="../../js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
             <script>
-            function clickinner(mybtn){
-               // Do your stuff here with the clicked button
-               location.href='../../../pages/RegisterPage/index.html?gender=on#'
-            };
+            // Load all bookings from localStorage
+            function loadBookings() {
+                const bookingsContainer = document.getElementById('bookings');
+                const allBookings = JSON.parse(localStorage.getItem('allBookings')) || [];
+                
+                if(allBookings.length === 0) {
+                    bookingsContainer.innerHTML = `
+                        <div class="container text-center" style="margin-top: 50px;">
+                            <h3>No bookings found</h3>
+                            <p>You haven't made any flight bookings yet.</p>
+                            <a href="../../index.html" class="btn btn-primary">Search Flights</a>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                let bookingsHTML = '<div class="container-fluid" style="padding: 0 40px;">';
+                
+                allBookings.forEach((booking, index) => {
+                    bookingsHTML += `
+                        <div class="card mb-3" style="border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border-left: 5px solid #04A289;">
+                            <div class="card-body" style="background: linear-gradient(135deg, #04A289 0%, #5faf8a 100%); color: white; border-radius: 10px 10px 0 0;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-6">
+                                        <h5 class="card-title mb-0" style="font-weight: bold; font-size: 24px;">${booking.airline}</h5>
+                                    </div>
+                                    <div class="col-md-6 text-md-right">
+                                        <h6 class="mb-0" style="font-size: 18px;">
+                                            <strong>${booking.from}</strong> ✈️ <strong>${booking.to}</strong>
+                                        </h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body" style="background: white;">
+                                <div class="row align-items-center">
+                                    <div class="col-md-2">
+                                        <p class="mb-1"><strong>Date:</strong></p>
+                                        <p class="text-muted">${booking.fromDate}</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p class="mb-1"><strong>Class:</strong></p>
+                                        <p class="text-muted">${booking.travelClass}</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p class="mb-1"><strong>Seat:</strong></p>
+                                        <p class="text-muted" style="font-size: 18px; font-weight: bold; color: #04A289;">${booking.seatNumber}</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p class="mb-1"><strong>Price:</strong></p>
+                                        <p class="text-muted">${booking.price}</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <p class="mb-1"><strong>Type:</strong></p>
+                                        <p class="text-muted">${booking.tripType}</p>
+                                    </div>
+                                    <div class="col-md-2 text-right">
+                                        <button class="btn btn-success btn-lg" style="background-color: #04A289; border: none;" onclick="viewBoardingPass(${index})">
+                                            View Pass
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                bookingsHTML += '</div>';
+                bookingsContainer.innerHTML = bookingsHTML;
+            }
+            
+            // View boarding pass in modal
+            function viewBoardingPass(index) {
+                const allBookings = JSON.parse(localStorage.getItem('allBookings')) || [];
+                const booking = allBookings[index];
+                
+                if(!booking) return;
+                
+                // Extract airport codes
+                const fromMatch = booking.from.match(/\(([^)]+)\)/);
+                const fromCode = fromMatch ? fromMatch[1] : booking.from.substring(0, 3).toUpperCase();
+                
+                const toMatch = booking.to.match(/\(([^)]+)\)/);
+                const toCode = toMatch ? toMatch[1] : booking.to.substring(0, 3).toUpperCase();
+                
+                const boardingPassHTML = `
+                    <div style="max-width: 600px; margin: 0 auto; padding: 20px; background: white; border: 2px solid #ddd; border-radius: 10px; border-left: 5px solid #04A289;">
+                        <div style="text-align: center; border-bottom: 2px dashed #ccc; padding-bottom: 20px; margin-bottom: 20px;">
+                            <h2 style="color: #04A289; margin: 0;">${booking.airline}</h2>
+                            <p style="margin: 5px 0; color: #666;">BOARDING PASS</p>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-around; margin-bottom: 20px;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 32px; font-weight: bold; color: #333;">${fromCode}</div>
+                                <div style="color: #666; font-size: 12px;">FROM</div>
+                            </div>
+                            <div style="text-align: center; padding-top: 10px;">
+                                <svg width="60" height="30" viewBox="0 0 60 30">
+                                    <path d="M10 15 L50 15" stroke="#04A289" stroke-width="2" fill="none"/>
+                                    <path d="M45 10 L50 15 L45 20" stroke="#04A289" stroke-width="2" fill="none"/>
+                                </svg>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 32px; font-weight: bold; color: #333;">${toCode}</div>
+                                <div style="color: #666; font-size: 12px;">TO</div>
+                            </div>
+                        </div>
+                        
+                        <div style="border: 2px solid #f0f0f0; border-radius: 8px; padding: 15px; background: #f9f9f9;">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                                <div>
+                                    <div style="color: #666; font-size: 11px; text-transform: uppercase;">Passenger Name</div>
+                                    <div style="font-weight: bold; font-size: 14px;">${booking.passengerName}</div>
+                                </div>
+                                <div>
+                                    <div style="color: #666; font-size: 11px; text-transform: uppercase;">Flight No.</div>
+                                    <div style="font-weight: bold; font-size: 14px;">${booking.flightNumber}</div>
+                                </div>
+                                <div>
+                                    <div style="color: #666; font-size: 11px; text-transform: uppercase;">Date</div>
+                                    <div style="font-weight: bold; font-size: 14px;">${booking.fromDate}</div>
+                                </div>
+                                <div>
+                                    <div style="color: #666; font-size: 11px; text-transform: uppercase;">Gate</div>
+                                    <div style="font-weight: bold; font-size: 14px;">${booking.gate}</div>
+                                </div>
+                                <div>
+                                    <div style="color: #666; font-size: 11px; text-transform: uppercase;">Seat</div>
+                                    <div style="font-weight: bold; font-size: 18px; color: #04A289;">${booking.seatNumber}</div>
+                                </div>
+                                <div>
+                                    <div style="color: #666; font-size: 11px; text-transform: uppercase;">Class</div>
+                                    <div style="font-weight: bold; font-size: 14px;">${booking.travelClass}</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 20px; text-align: center; border-top: 2px dashed #ccc; padding-top: 20px;">
+                            <div style="background: #333; height: 60px; background-image: repeating-linear-gradient(90deg, #000 0px, #000 2px, #fff 2px, #fff 4px);"></div>
+                            <p style="margin-top: 10px; color: #999; font-size: 12px;">Please arrive at the gate 30 minutes before departure</p>
+                        </div>
+                    </div>
+                `;
+                
+                document.getElementById('boardingPassContent').innerHTML = boardingPassHTML;
+                $('#boardingPassModal').modal('show');
+            }
+            
+            // Print boarding pass
+            function printBoardingPass() {
+                const printContent = document.getElementById('boardingPassContent').innerHTML;
+                const originalContent = document.body.innerHTML;
+                document.body.innerHTML = printContent;
+                window.print();
+                document.body.innerHTML = originalContent;
+                location.reload();
+            }
+            
+            // Load bookings when page loads
+            window.addEventListener('DOMContentLoaded', loadBookings);
             </script>
 
 

@@ -4,8 +4,57 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Boarding Pass</title>
     <link rel="stylesheet" href="./style.css">
+    <script>
+        // Load booking data from localStorage when page loads
+        window.addEventListener('DOMContentLoaded', (event) => {
+            const bookingData = JSON.parse(localStorage.getItem('bookingData'));
+            
+            if(bookingData) {
+                // Update airline names
+                document.querySelectorAll('.airline').forEach(el => {
+                    el.textContent = bookingData.airline;
+                });
+                
+                // Update airport codes
+                document.querySelectorAll('.jfk').forEach(el => {
+                    // Extract airport code from "City (CODE)" format
+                    const fromMatch = bookingData.from.match(/\(([^)]+)\)/);
+                    el.textContent = fromMatch ? fromMatch[1] : bookingData.from.substring(0, 3).toUpperCase();
+                });
+                
+                document.querySelectorAll('.sfo').forEach(el => {
+                    const toMatch = bookingData.to.match(/\(([^)]+)\)/);
+                    el.textContent = toMatch ? toMatch[1] : bookingData.to.substring(0, 3).toUpperCase();
+                });
+                
+                // Update watermark
+                document.querySelector('.watermark').textContent = bookingData.airline;
+                
+                // Update passenger name
+                document.querySelectorAll('.name span').forEach(el => {
+                    el.textContent = bookingData.passengerName;
+                });
+                
+                // Update flight number
+                document.querySelectorAll('.flight span').forEach(el => {
+                    el.textContent = bookingData.flightNumber;
+                });
+                
+                // Update gate
+                document.querySelector('.gate span').textContent = bookingData.gate;
+                
+                // Update seat numbers
+                document.querySelectorAll('.seat span').forEach(el => {
+                    el.textContent = bookingData.seatNumber;
+                });
+                
+                // Update boarding time
+                document.querySelector('.boardingtime span').textContent = bookingData.fromDate;
+            }
+        });
+    </script>
 </head>
 
 <body>
